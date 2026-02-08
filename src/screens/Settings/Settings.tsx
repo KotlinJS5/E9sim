@@ -27,7 +27,7 @@ export default function Settings({ route,  navigation }: RootScreenProps<'Settin
   const {setTheme} = useColorScheme();
 
   const items: SettingDataType[] = [
-    { key: 'language', options: ['en','ja','zh','es','ru','ar'], defaultValue: 'en', type: 'select', onChange: (value: string) => { preferences.set('language', value); void i18next.changeLanguage(value); } },
+    { key: 'language', options: ['en','ja','zh','es','ru','ar','pl'], defaultValue: 'en', type: 'select', onChange: (value: string) => { preferences.set('language', value); void i18next.changeLanguage(value); } },
     { key: 'theme', options: ['default','dark','light'], defaultValue: 'default', type: 'select', onChange: (value: string) => { setTheme(value); } },
     { key: 'showSlots', options: ['all','possible','available'], defaultValue: 'all', type: 'select' },
     { key: 'redactMode', options: ['none','medium','hard'], defaultValue: 'none', type: 'select' },

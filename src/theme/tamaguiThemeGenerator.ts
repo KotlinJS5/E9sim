@@ -15,7 +15,14 @@ export function generateTamaguiTheme(
 ): Record<string, string> {
 
   const palette = MaterialYou.getMaterialYouPalette();
-  const primaryColor = themeColor === "my" ? palette?.system_accent1[7] : themeColor || '#a575f6';
+  
+  // Material You Palette Mapping
+  // Accent1: Primary, Accent2: Secondary, Accent3: Tertiary, Neutral1: Surface, Neutral2: Surface Variant
+  const myPrimary = palette?.system_accent1[7] || '#a575f6';
+  const mySurface = baseTheme === 'light' ? (palette?.system_neutral1[1] || '#f0f1f5') : (palette?.system_neutral1[11] || '#0b0b0f');
+  const mySurfaceVariant = baseTheme === 'light' ? (palette?.system_neutral2[2] || '#ffffff') : (palette?.system_neutral2[10] || '#16161d');
+
+  const primaryColor = themeColor === "my" ? myPrimary : themeColor || '#a575f6';
 
   const isPrimaryDark = isDarkColor(primaryColor);
 
@@ -32,23 +39,23 @@ export function generateTamaguiTheme(
   const btnAltForeground = isBtnAltBackgroundDark ? '#ffffff' : '#000000';
 
   const baseLightTheme = {
-    background: '#f0f1f5',
+    background: themeColor === "my" ? mySurface : '#f0f1f5',
     color: '#0c0c0c',
     borderColor: '#e6e6ea',
-    shadowColor: 'rgba(0,0,0,0.06)',
-    surfaceRow: '#ffffff',
+    shadowColor: 'rgba(0,0,0,0.04)', // Lighter shadow for cleaner look
+    surfaceRow: themeColor === "my" ? mySurfaceVariant : '#ffffff',
     // keep special surfaces pure white to appear lighter than page bg
-    surfaceSpecial: '#ffffff',
+    surfaceSpecial: themeColor === "my" ? mySurfaceVariant : '#ffffff',
   };
 
   const baseDarkTheme = {
-    background: '#0b0b0f',
+    background: themeColor === "my" ? mySurface : '#0b0b0f',
     color: '#e9e9ef',
     borderColor: '#161620',
-    shadowColor: 'rgba(0,0,0,0.35)',
-    surfaceRow: '#16161d',
+    shadowColor: 'rgba(0,0,0,0.25)', // Reduced shadow
+    surfaceRow: themeColor === "my" ? mySurfaceVariant : '#16161d',
     // make row surfaces lighter than background a bit more pronounced on dark
-    surfaceSpecial: '#292934',
+    surfaceSpecial: themeColor === "my" ? mySurfaceVariant : '#292934',
   };
 
   if (baseTheme === 'light') {
@@ -153,4 +160,3 @@ export function generateTamaguiThemes(primaryColor: string) {
     dark: generateTamaguiTheme(primaryColor, 'dark'),
   };
 }
-

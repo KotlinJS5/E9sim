@@ -341,13 +341,6 @@ export default function ProfileCardHeader({ deviceId, rearrangeMode, setRearrang
           />
           <RoundedButton
             backgroundColor="$btnBackground"
-            icon={<MessageSquareShare size="$1" color="$btnForeground" />}
-            onPress={() => {navigation.navigate('Notifications', { deviceId });}}
-            radiusL={0}
-            radiusR={0}
-          />
-          <RoundedButton
-            backgroundColor="$btnBackground"
             icon={<Plus size="$1" color="$btnForeground" />}
             onPress={() => {navigation.navigate('Scanner', { deviceId });}}
             radiusL={0}

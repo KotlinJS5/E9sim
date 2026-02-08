@@ -22,8 +22,8 @@ function Main({ navigation }: RootScreenProps<'Main'>) {
 
 	return (
 		<Screen title="" horizontalPadding={24} keyboardAvoiding={false} scrollViewProps={{ scrollEnabled: false }}>
-			<YStack gap={10} flex={1} marginTop={12}>
-				<XStack alignItems="center" justifyContent="space-between">
+			<YStack gap={12} flex={1} marginTop={8}>
+				<XStack alignItems="center" justifyContent="space-between" marginBottom={4}>
 					<AppHeader navigation={navigation} />
 					<ActionButtons navigation={navigation} onRefresh={handleRefresh} />
 				</XStack>

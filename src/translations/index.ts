@@ -7,6 +7,7 @@ import * as ja from './ja';
 import * as es from './es';
 import * as ar from './ar';
 import * as ru from './ru';
+import * as pl from './pl';
 import {I18nManager} from 'react-native';
 import {preferences} from "@/utils/mmkv";
 
@@ -31,8 +32,9 @@ void i18n.use(initReactI18next).init({
 		ja,
 		es,
 		ar,
-		ru
-	},
+			ru,
+			pl
+		},
 	lng: locale,
 	fallbackLng: 'en',
 	interpolation: {
